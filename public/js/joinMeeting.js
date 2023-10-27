@@ -285,7 +285,7 @@ const peer = new Peer(undefined, {
   // host: "/",
   // port: "3030",
   // path: "/peerjs",
-  host: "xyz-m6zr.onrender.com",
+  host: "test-381r.onrender.com/",
   secure: true, // Use true for HTTPS
   port: 443,
   path: "/peerjs",
@@ -328,7 +328,7 @@ navigator.mediaDevices
 
 socket.on("leave", (roomId) => {
   socket.emit("leave-all", roomId);
-  window.location = "https://xyz-m6zr.onrender.com";
+  window.location = "http://http://test-381r.onrender.com";
 });
 
 const connectToNewUser = (userId, stream) => {
@@ -414,8 +414,8 @@ retryRandom.addEventListener("click", (e) => {
 });
 
 function getEndCall() {
-  // const parentElement = myVideo.parentElement;
-  // const childElements = parentElement.children;
+  const parentElement = myVideo.parentElement;
+  const childElements = parentElement.children;
   // // console.log(parentElement);
   // // console.log(allVideo);
   // // console.log(peer.id);
@@ -425,7 +425,11 @@ function getEndCall() {
   // for (let i = childElements.length - 1; i > 0; i--) {
   //   parentElement.removeChild(childElements[i]);
   // }
-  socket.emit("random-leave");
+  console.log(childElements.length)
+  if(childElements.length>1){
+    socket.emit("random-leave");
+  }else window.location = "http://test-381r.onrender.com/";
+
 }
 
 stopVideo.addEventListener("click", () => {
@@ -454,5 +458,3 @@ socket.on("createMessage", (message, userName) => {
         <span>${message}</span>
     </div>`;
 });
-
-// Rest of the code remains the same.
